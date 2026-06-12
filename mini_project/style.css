@@ -1,0 +1,51 @@
+/* Google Font Import */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+/* Body Styling */
+body{
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    text-align: center;
+
+    /* Background Image */
+    background-image: url("background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* Heading */
+h1{
+    background-color: lightblue;
+    padding: 15px;
+    margin: 0;
+}
+
+/* Navigation Bar */
+nav{
+    background-color: gray;
+    padding: 10px;
+}
+
+/* Navigation Links */
+nav a{
+    text-decoration: none;
+    color: white;
+    margin: 15px;
+}
+
+/* Content Box */
+.box{
+    width: 250px;
+    margin: 20px auto;
+    padding: 15px;
+    border: 1px solid black;
+    background-color: white;
+}
+
+/* Footer */
+footer{
+    background-color: lightblue;
+    padding: 10px;
+    margin-top: 20px;
+}
