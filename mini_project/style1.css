@@ -1,0 +1,100 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+}
+
+header {
+    background-color: #1e3a8a;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+nav {
+    background-color: #2563eb;
+    text-align: center;
+    padding: 10px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 15px;
+}
+
+section {
+    padding: 20px;
+}
+
+h2 {
+    color: #1e3a8a;
+}
+
+.card {
+    background-color: white;
+    width: 200px;
+    padding: 15px;
+    margin: 10px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.profile {
+    background-color: white;
+    width: 400px;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.profile img {
+    width: 100px;
+    border-radius: 50%;
+}
+
+table {
+    width: 100%;
+    background-color: white;
+    border-collapse: collapse;
+}
+
+th {
+    background-color: #1e3a8a;
+    color: white;
+}
+
+th,
+td {
+    border: 1px solid gray;
+    padding: 10px;
+    text-align: center;
+}
+
+.progress {
+    width: 80%;
+    background-color: green;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+.certificate {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.btn {
+    background-color: #2563eb;
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+}
+
+footer {
+    background-color: #1e3a8a;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
