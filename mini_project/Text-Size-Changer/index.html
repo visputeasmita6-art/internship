@@ -3,66 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Text Size Changer</title>
+
     <style>
         .container {
-  max-width: 400px;
-  margin: 50px auto;
-}
+            width: 400px;
+            margin: 50px auto;
+            text-align: center;
+        }
 
-h1 {
-  text-align: center;
-}
+        h1 {
+            margin-bottom: 20px;
+        }
 
-#text {
-  font-size: 18px;
-  text-align: center;
-  margin-bottom: 20px;
-}
+        input {
+            width: 250px;
+            padding: 10px;
+            font-size: 16px;
+        }
 
-button {
-  
-  padding: 10px 20px;
-  font-size: 16px;
-  margin: 0 10px;
-}
+        #text {
+            font-size: 16px;
+            margin: 20px 0;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 0 10px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
+
     <div class="container">
         <h1>Text Size Changer</h1>
-        
-        <p id="text">This is some sample text.</p>
-    
-        <button id="increaseBtn">+</button>
-        <button id="decreaseBtn">-</button>
-    
-      </div>
-      <script>
-        // javascript code goes here
 
-const increaseBtn = document.querySelector("#increaseBtn");
-const decreaseBtn = document.querySelector("#decreaseBtn");
-const textElement = document.querySelector("#text");
+        <input type="text" id="inputText" placeholder="Type something here">
 
-increaseBtn.addEventListener("click", increaseFontSize);
-decreaseBtn.addEventListener("click", decreaseFontSize);
+        <p id="text">Your text will appear here</p>
 
-function increaseFontSize() {
-    const currentSize = parseInt(getComputedStyle(textElement).fontSize);
-    
-    const newSize = currentSize + 2;
-    
-    textElement.style.fontSize = newSize + "px";
-}
+        <button id="plus">+</button>
+        <button id="minus">-</button>
+    </div>
 
-function decreaseFontSize() {
-    const currentSize = parseInt(getComputedStyle(textElement).fontSize);
-    
-    const newSize = Math.max(currentSize - 2, 10);
-    
-    textElement.style.fontSize = newSize + "px";
-}
-      </script>
+    <script>
+        // Select elements
+        let input = document.getElementById("inputText");
+        let text = document.getElementById("text");
+        let plusBtn = document.getElementById("plus");
+        let minusBtn = document.getElementById("minus");
+
+        // Starting font size
+        let size = 16;
+
+        // Show text while typing
+        input.addEventListener("keyup", function () {
+            if (input.value === "") {
+                text.innerText = "Your text will appear here";
+            } else {
+                text.innerText = input.value;
+            }
+        });
+
+        // Increase font size
+        plusBtn.addEventListener("click", function () {
+            size = size + 2;
+            text.style.fontSize = size + "px";
+        });
+
+        // Decrease font size
+        minusBtn.addEventListener("click", function () {
+            if (size > 10) {
+                size = size - 2;
+                text.style.fontSize = size + "px";
+            }
+        });
+    </script>
+
 </body>
 </html>

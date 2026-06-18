@@ -6,13 +6,13 @@
     <title>Document</title>
    <style>
     body{
-        background-color:black ;
+        background-color:rgb(242, 236, 236) ;
 
     }
     .container1{
         height: 100px;
         width: 100px;
-        background-color: red;
+        background-color: rgb(244, 239, 239);
 
     }
    </style>
@@ -20,7 +20,7 @@
 <body>
 
        <div class="container1">
-           
+           <img src="bg-image.jpg" alt="Fruits" style="width: 100%; height: 100%; object-fit: cover;">
        </div>
         <div class="container">
             <h2>Filter Fruits By Type</h2>
@@ -38,54 +38,44 @@
         <script>
 
             
-       const fruits = [
-    { name: "Lemon", type: "citrus" },
+       const fruits = 
+       [
+    { name: "Orange", type: "citrus" },
     { name: "Blueberry", type: "berry" },
     { name: "Peach", type: "stone" },
-    { name: "Orange", type: "citrus" },
+    { name: "Lemon", type: "citrus" },
     { name: "Strawberry", type: "berry" },
     { name: "Cherry", type: "stone" },
       ];
 
-            
-            const filterButton = document.querySelector("#filterBtn");
             const fruitSelected = document.getElementById("fruitType");
-            
-           filterButton.addEventListener("click",(e)=>{
-                 
+            const filterButton = document.getElementById("filterBtn");
+            const fruitList = document.getElementById("fruitList");
+
+            function renderFruits(items) {
+                fruitList.innerHTML = "";
+                items.forEach((fruit) => {
+                    const newli = document.createElement("li");
+                    newli.textContent = fruit.name;
+                    fruitList.append(newli);
+                });
+            }
+
+            function filterFruits() {
+                const selectedType = fruitSelected.value;
+                const filteredFruits = fruits.filter((fruit) => {
+                    return selectedType === "all" || fruit.type === selectedType;
+                });
+                renderFruits(filteredFruits);
+            }
+
+            filterButton.addEventListener("click", (e) => {
                 e.preventDefault();
-               const selectedType = fruitSelected.value; 
+                filterFruits();
+            });
 
-               const filteredFruits = fruits.filter((fruits)=>{
-                    
-                   if(selectedType === "all"){
-                     return fruits;
-                   }
-                   if(selectedType === fruits.type){
-                     return fruits;
-                   }
-
-               })
- 
-          
-
-
-           const fruitList = document.getElementById("fruitList");
-           fruitList.innerHTML = ""; 
-           
-           
-           filteredFruits.forEach((fruit)=>{
-
-            const newli = document.createElement("li");
-            newli.textContent = fruit.name;
-            fruitList.append(newli);
-            
-           })
-           
-          });
-
-
-           </script>
+            renderFruits(fruits);
+        </script>
 </body>
 
 </html>
