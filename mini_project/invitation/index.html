@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Special Invitation</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(-45deg,#ff9a9e,#fad0c4,#fbc2eb,#a18cd1);
+    background-size:400% 400%;
+    animation:bg 10s ease infinite;
+    overflow:hidden;
+}
+
+@keyframes bg{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+.card{
+    width:380px;
+    background:white;
+    padding:30px;
+    border-radius:25px;
+    text-align:center;
+    box-shadow:0 0 25px rgba(255,255,255,0.8);
+    animation:float 3s ease-in-out infinite;
+    transition:0.4s;
+}
+
+.card:hover{
+    transform:scale(1.05);
+}
+
+@keyframes float{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-10px);
+    }
+}
+
+h1{
+    color:#e91e63;
+    margin-bottom:15px;
+}
+
+.subtitle{
+    color:#666;
+    margin-bottom:20px;
+}
+
+button{
+    padding:12px 25px;
+    border:none;
+    border-radius:30px;
+    background:#e91e63;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+button:hover{
+    background:#c2185b;
+    transform:scale(1.1);
+}
+
+#details{
+    display:none;
+    margin-top:20px;
+    animation:fadeIn 1s;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.info{
+    margin:12px 0;
+    font-size:18px;
+}
+
+.emoji{
+    font-size:28px;
+    animation:bounce 2s infinite;
+}
+
+@keyframes bounce{
+    50%{
+        transform:translateY(-8px);
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="card">
+
+    <div class="emoji">🎉✨🎈</div>
+
+    <h1>You're Invited!</h1>
+
+    <p class="subtitle">
+        A special celebration awaits you.
+    </p>
+
+    <button onclick="showInvitation()">
+        Open Invitation
+    </button>
+
+    <div id="details">
+
+        <h2 style="color:#9c27b0;">
+            🌸 Asmita Vispute 🌸
+        </h2>
+
+        <p class="info">
+            💌 You are cordially invited to join us for a memorable event.
+        </p>
+
+        <p class="info">
+            📅 Date: 10 March 2026
+        </p>
+
+        <p class="info">
+            🕕 Time: 6:00 PM
+        </p>
+
+        <p class="info">
+            📍 Venue: Seven Heaven, Nashik
+        </p>
+
+        <p class="info">
+            🌟 Your presence will make this celebration even more special.
+        </p>
+
+        <h2>🎂🎁🎊</h2>
+
+    </div>
+
+</div>
+
+<script>
+function showInvitation(){
+
+    let details = document.getElementById("details");
+
+    if(details.style.display === "block"){
+        details.style.display = "none";
+    }
+    else{
+        details.style.display = "block";
+    }
+}
+</script>
+
+</body>
+</html>
