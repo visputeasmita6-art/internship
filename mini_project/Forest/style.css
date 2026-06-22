@@ -1,0 +1,643 @@
+/* ======================================
+   GLOBAL STYLES
+====================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+
+    --bg:#07130c;
+    --card:#10251a;
+    --sidebar:#0a1b12;
+
+    --green:#00ff88;
+    --green-dark:#00c96b;
+
+    --red:#ff4d4d;
+    --yellow:#ffc107;
+
+    --white:#ffffff;
+    --text:#d6e6dc;
+
+    --glass:rgba(255,255,255,0.06);
+}
+
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    background:var(--bg);
+
+    color:var(--white);
+
+    overflow-x:hidden;
+}
+
+/* ======================================
+   LOADER
+====================================== */
+
+#loader{
+
+    position:fixed;
+
+    inset:0;
+
+    background:#05100a;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    z-index:99999;
+}
+
+.spinner{
+
+    width:70px;
+
+    height:70px;
+
+    border:6px solid #163223;
+
+    border-top:6px solid var(--green);
+
+    border-radius:50%;
+
+    animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+
+    from{
+        transform:rotate(0deg);
+    }
+
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+/* ======================================
+   SIDEBAR
+====================================== */
+
+.sidebar{
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:260px;
+
+    height:100vh;
+
+    background:var(--sidebar);
+
+    border-right:1px solid rgba(255,255,255,.08);
+
+    padding:25px;
+
+    z-index:1000;
+}
+
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    margin-bottom:40px;
+}
+
+.logo i{
+
+    color:var(--green);
+
+    font-size:32px;
+}
+
+.logo h2{
+
+    font-size:22px;
+}
+
+.sidebar ul{
+
+    list-style:none;
+}
+
+.sidebar li{
+
+    padding:15px;
+
+    margin-bottom:10px;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.sidebar li:hover{
+
+    background:rgba(0,255,136,.12);
+
+    transform:translateX(5px);
+}
+
+.sidebar li.active{
+
+    background:rgba(0,255,136,.18);
+
+    border-left:4px solid var(--green);
+}
+
+.sidebar li i{
+
+    margin-right:10px;
+}
+
+/* ======================================
+   MAIN CONTENT
+====================================== */
+
+.main-content{
+
+    margin-left:260px;
+
+    min-height:100vh;
+
+    padding:20px;
+}
+
+/* ======================================
+   TOPBAR
+====================================== */
+
+.topbar{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:25px;
+}
+
+.search-box{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    background:var(--glass);
+
+    backdrop-filter:blur(12px);
+
+    padding:12px;
+
+    border-radius:12px;
+}
+
+.search-box input{
+
+    width:350px;
+
+    background:transparent;
+
+    border:none;
+
+    color:white;
+
+    outline:none;
+}
+
+.search-box button{
+
+    background:var(--green);
+
+    color:black;
+
+    border:none;
+
+    padding:10px 20px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    font-weight:600;
+}
+
+.notification-btn{
+
+    position:relative;
+
+    background:var(--glass);
+
+    border:none;
+
+    color:white;
+
+    padding:15px;
+
+    border-radius:50%;
+
+    cursor:pointer;
+}
+
+.notification-btn span{
+
+    position:absolute;
+
+    top:-5px;
+
+    right:-5px;
+
+    width:20px;
+
+    height:20px;
+
+    border-radius:50%;
+
+    background:red;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:11px;
+}
+
+/* ======================================
+   DASHBOARD CARDS
+====================================== */
+
+.cards{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:20px;
+
+    margin-bottom:25px;
+}
+
+.card{
+
+    background:var(--glass);
+
+    backdrop-filter:blur(15px);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    padding:25px;
+
+    border-radius:20px;
+
+    transition:.4s;
+}
+
+.card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 0 25px rgba(0,255,136,.18);
+}
+
+.card i{
+
+    font-size:28px;
+
+    color:var(--green);
+
+    margin-bottom:10px;
+}
+
+.card h3{
+
+    color:#c9d8d0;
+
+    font-size:15px;
+}
+
+.card h1{
+
+    margin-top:10px;
+
+    font-size:32px;
+}
+
+/* ======================================
+   MAP
+====================================== */
+
+.map-section{
+
+    margin-bottom:25px;
+}
+
+.section-title{
+
+    margin-bottom:15px;
+}
+
+#map{
+
+    height:500px;
+
+    width:100%;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    border:1px solid rgba(255,255,255,.08);
+}
+
+/* ======================================
+   ANALYTICS
+====================================== */
+
+.analytics{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:20px;
+
+    margin-top:20px;
+}
+
+.left-panel,
+.right-panel{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:20px;
+}
+
+.glass-card{
+
+    background:var(--glass);
+
+    backdrop-filter:blur(15px);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    padding:25px;
+
+    border-radius:20px;
+}
+
+.glass-card h2{
+
+    margin-bottom:20px;
+}
+
+/* ======================================
+   TABLE
+====================================== */
+
+table{
+
+    width:100%;
+}
+
+table td{
+
+    padding:12px;
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+/* ======================================
+   GAUGE
+====================================== */
+
+.gauge-wrapper{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    position:relative;
+}
+
+.gauge-bg{
+
+    fill:none;
+
+    stroke:#20352b;
+
+    stroke-width:15;
+}
+
+.gauge-fill{
+
+    fill:none;
+
+    stroke:var(--red);
+
+    stroke-width:15;
+
+    stroke-linecap:round;
+
+    stroke-dasharray:565;
+
+    stroke-dashoffset:100;
+
+    transform-origin:center;
+
+    transform:rotate(-90deg);
+
+    transform-box:fill-box;
+}
+
+.gauge-text{
+
+    position:absolute;
+
+    font-size:32px;
+
+    font-weight:700;
+}
+
+/* ======================================
+   CHARTS
+====================================== */
+
+.chart-card{
+
+    height:350px;
+}
+
+.chart-card canvas{
+
+    width:100% !important;
+
+    height:250px !important;
+}
+
+/* ======================================
+   ALERTS
+====================================== */
+
+.alerts-section{
+
+    margin-top:25px;
+}
+
+.alerts-section h2{
+
+    margin-bottom:15px;
+}
+
+.alert-box{
+
+    background:rgba(255,77,77,.12);
+
+    border-left:5px solid var(--red);
+
+    padding:15px;
+
+    margin-bottom:10px;
+
+    border-radius:12px;
+
+    animation:slideIn .5s ease;
+}
+
+@keyframes slideIn{
+
+    from{
+
+        opacity:0;
+
+        transform:translateX(50px);
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateX(0);
+    }
+}
+
+/* ======================================
+   TOAST
+====================================== */
+
+#toast{
+
+    position:fixed;
+
+    top:20px;
+
+    right:20px;
+
+    background:var(--red);
+
+    color:white;
+
+    padding:18px 25px;
+
+    border-radius:12px;
+
+    display:none;
+
+    z-index:9999;
+
+    box-shadow:0 0 20px rgba(255,77,77,.3);
+}
+
+/* ======================================
+   SCROLLBAR
+====================================== */
+
+::-webkit-scrollbar{
+
+    width:8px;
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:var(--green);
+
+    border-radius:10px;
+}
+
+/* ======================================
+   RESPONSIVE
+====================================== */
+
+@media(max-width:1200px){
+
+    .cards{
+
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .analytics{
+
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:900px){
+
+    .sidebar{
+
+        display:none;
+    }
+
+    .main-content{
+
+        margin-left:0;
+    }
+
+    .cards{
+
+        grid-template-columns:1fr;
+    }
+
+    .search-box{
+
+        flex-direction:column;
+    }
+
+    .search-box input{
+
+        width:100%;
+    }
+
+    #map{
+
+        height:400px;
+    }
+}

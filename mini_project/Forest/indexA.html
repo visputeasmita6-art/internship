@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>ForestGuard AI</title>
+
+    <!-- Google Font -->
+
+    <link rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Leaflet -->
+
+    <link rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
+    <!-- CSS -->
+
+    <link rel="stylesheet"
+        href="style.css">
+
+</head>
+
+<body>
+
+    <!-- ===============================
+         LOADER
+    ================================ -->
+
+    <div id="loader">
+
+        <div class="spinner"></div>
+
+        <h2>Loading Forest Intelligence System...</h2>
+
+    </div>
+
+    <!-- ===============================
+         SIDEBAR
+    ================================ -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <i class="fa-solid fa-tree"></i>
+
+            <h2>ForestGuard AI</h2>
+
+        </div>
+
+        <nav>
+
+            <ul>
+
+                <li class="active">
+
+                    <i class="fa-solid fa-chart-line"></i>
+
+                    Dashboard
+
+                </li>
+
+                <li>
+
+                    <i class="fa-solid fa-fire"></i>
+
+                    Fire Monitoring
+
+                </li>
+
+                <li>
+
+                    <i class="fa-solid fa-wind"></i>
+
+                    Air Pollution
+
+                </li>
+
+                <li>
+
+                    <i class="fa-solid fa-shield"></i>
+
+                    Smuggling Risk
+
+                </li>
+
+                <li>
+
+                    <i class="fa-solid fa-leaf"></i>
+
+                    Forest Analytics
+
+                </li>
+
+                <li>
+
+                    <i class="fa-solid fa-bell"></i>
+
+                    Alerts
+
+                </li>
+
+            </ul>
+
+        </nav>
+
+    </aside>
+
+    <!-- ===============================
+         MAIN CONTENT
+    ================================ -->
+
+    <main class="main-content">
+
+        <!-- Topbar -->
+
+        <header class="topbar">
+
+            <div class="search-box">
+
+                <i class="fa-solid fa-location-dot"></i>
+
+                <input type="text"
+                    id="locationInput"
+                    placeholder="Search Forest Location">
+
+                <button onclick="searchLocation()">
+
+                    Search
+
+                </button>
+
+            </div>
+
+            <div class="user-panel">
+
+                <button class="notification-btn">
+
+                    <i class="fa-solid fa-bell"></i>
+
+                    <span id="notificationCount">
+                        3
+                    </span>
+
+                </button>
+
+            </div>
+
+        </header>
+
+        <!-- Dashboard Cards -->
+
+        <section class="cards">
+
+            <div class="card">
+
+                <i class="fa-solid fa-tree"></i>
+
+                <h3>Total Trees</h3>
+
+                <h1 id="treeCount">
+                    0
+                </h1>
+
+            </div>
+
+            <div class="card">
+
+                <i class="fa-solid fa-map"></i>
+
+                <h3>Forest Area</h3>
+
+                <h1 id="forestArea">
+                    0 km²
+                </h1>
+
+            </div>
+
+            <div class="card">
+
+                <i class="fa-solid fa-fire"></i>
+
+                <h3>Fire Risk</h3>
+
+                <h1 id="fireRisk">
+                    LOW
+                </h1>
+
+            </div>
+
+            <div class="card">
+
+                <i class="fa-solid fa-wind"></i>
+
+                <h3>AQI</h3>
+
+                <h1 id="aqi">
+                    0
+                </h1>
+
+            </div>
+
+        </section>
+
+        <!-- Map Area -->
+
+        <section class="map-section">
+
+            <div class="section-title">
+
+                <h2>
+                    Live Forest Monitoring Map
+                </h2>
+
+            </div>
+
+            <div id="map"></div>
+
+        </section>
+
+        <!-- Analytics -->
+
+        <section class="analytics">
+
+            <div class="left-panel">
+
+                <div class="glass-card">
+
+                    <h2>Forest Information</h2>
+
+                    <table>
+
+                        <tr>
+
+                            <td>Species</td>
+
+                            <td id="species">
+                                ---
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>Carbon Storage</td>
+
+                            <td id="carbonStorage">
+                                ---
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>Smuggling Risk</td>
+
+                            <td id="smugglingRisk">
+                                ---
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>Fire Prediction</td>
+
+                            <td id="firePrediction">
+                                ---
+                            </td>
+
+                        </tr>
+
+                    </table>
+
+                </div>
+
+                <div class="glass-card">
+
+                    <h2>
+                        Risk Gauge
+                    </h2>
+
+                    <div class="gauge-wrapper">
+
+                        <svg width="220"
+                            height="220">
+
+                            <circle
+                                cx="110"
+                                cy="110"
+                                r="90"
+                                class="gauge-bg">
+
+                            </circle>
+
+                            <circle
+                                cx="110"
+                                cy="110"
+                                r="90"
+                                class="gauge-fill"
+                                id="gaugeFill">
+
+                            </circle>
+
+                        </svg>
+
+                        <div class="gauge-text">
+
+                            <span id="riskPercentage">
+
+                                82%
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="right-panel">
+
+                <div class="glass-card chart-card">
+
+                    <h2>
+                        Fire Trends
+                    </h2>
+
+                    <canvas id="fireChart"></canvas>
+
+                </div>
+
+                <div class="glass-card chart-card">
+
+                    <h2>
+                        Air Quality Trend
+                    </h2>
+
+                    <canvas id="aqiChart"></canvas>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- Alerts -->
+
+        <section class="alerts-section">
+
+            <h2>
+                Live Alerts
+            </h2>
+
+            <div id="alertContainer">
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Floating Toast -->
+
+    <div id="toast">
+
+        Alert
+
+    </div>
+
+    <!-- Leaflet -->
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <!-- ChartJS -->
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Main Script -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
